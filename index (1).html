@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Apostas</title>
+    <link rel="stylesheet" href="style.css">
+<style type="text/css" id="dcoder_stylesheet">body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header .logo {
+    width: 100px;
+    height: auto;
+}
+
+main {
+    margin: 20px;
+}
+
+#register, #slots, #games, #casino-games, #payment, #deposit {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.slot-machine {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.slot {
+    font-size: 2em;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+label, input, select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input, select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}</style></head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo da Casa de Apostas" class="logo">
+        <h1>Casa de Apostas</h1>
+    </header>
+    <main>
+        <section id="register">
+            <h2>Registrar</h2>
+            <form id="register-form">
+                <label for="phone">Número de Telefone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="button" onclick="registerAccount()">Registrar</button>
+            </form>
+        </section>
+        <section id="slots">
+            <h2>Máquina de Slots</h2>
+            <div class="slot-machine">
+                <div id="slot1" class="slot">🍒</div>
+                <div id="slot2" class="slot">🍋</div>
+                <div id="slot3" class="slot">🍉</div>
+            </div>
+            <button onclick="playSlots()">Jogar</button>
+            <audio id="slot-sound" src="slots.mp3"></audio>
+        </section>
+        <section id="games">
+            <h2>Jogos Populares da PG</h2>
+            <ul>
+                <li>Fortune Tiger</li>
+                <li>Fortune Mouse</li>
+                <li>Fortune Ox</li>
+                <li>Dragon Legend</li>
+                <li>Double Fortune</li>
+                <li>Mahjong Ways</li>
+                <li>Tree of Fortune</li>
+                <li>Wild Bandito</li>
+                <li>Caishen Wins</li>
+                <li>The Great Icescape</li>
+            </ul>
+        </section>
+        <section id="casino-games">
+            <h2>Jogos de Cassino</h2>
+            <button onclick="playRoulette()">Jogar Roleta</button>
+            <button onclick="playBlackjack()">Jogar Blackjack</button>
+            <button onclick="playPoker()">Jogar Poker</button>
+        </section>
+        <section id="payment">
+            <h2>Métodos de Pagamento</h2>
+            <form id="payment-form">
+                <label for="payment-method">Escolha um método de pagamento:</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="paypal">PayPal</option>
+                    <option value="credit-card">Cartão de Crédito</option>
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="pix">Pix</option>
+                </select>
+                <button type="button" onclick="processPayment()">Pagar</button>
+            </form>
+        </section>
+        <section id="deposit">
+            <h2>Depósito</h2>
+            <p>Para depositar, por favor, envie o valor desejado para a chave Pix abaixo:</p>
+            <p><strong>Chave Pix: betblazersuporte@gmail.com</strong></p>
+            <label for="deposit-amount">Valor do Depósito:</label>
+            <select id="deposit-amount" name="deposit-amount" required>
+                <option value="" disabled selected>Selecione um valor</option>
+                <option value="20">R$ 20</option>
+                <option value="30">R$ 30</option>
+                <option value="40">R$ 40</option>
+                <option value="50">R$ 50</option>
+                <option value="100">R$ 100</option>
+                <option value="150">R$ 150</option>
+                <option value="200">R$ 200</option>
+                <option value="300">R$ 300</option>
+                <option value="400">R$ 400</option>
+                <option value="500">R$ 500</option>
+                <option value="1000">R$ 1000</option>
+            </select>
+            <button onclick="confirmDeposit()">Confirmar Depósito</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+
+<script type="text/javascript" id="dcoder_script">function playSlots() {
+    const slots = ['🍒', '🍋', '🍉', '🍊', '🍇', '🍓'];
+    const slot1 = document.getElementById('slot1');
+    const slot2 = document.getElementById('slot2');
+    const slot3 = document.getElementById('slot3');
+    const slotSound = document.getElementById('slot-sound');
+
+    // Tocar música dos slots
+    slotSound.play();
+
+    // Gerar resultados aleatórios
+    slot1.innerText = slots[Math.floor(Math.random() * slots.length)];
+    slot2.innerText = slots[Math.floor(Math.random() * slots.length)];
+    slot3.innerText = slots[Math.floor(Math.random() * slots.length)];
+
+    // Verificar se ganhou (nunca ganhar)
+    setTimeout(() => {
+        alert('Você perdeu! Tente novamente.');
+    }, 100);
+}
+
+function playRoulette() {
+    alert('Você jogou roleta e perdeu!');
+}
+
+function playBlackjack() {
+    alert('Você jogou blackjack e perdeu!');
+}
+
+function playPoker() {
+    alert('Você jogou poker e perdeu!');
+}
+
+function processPayment() {
+    const paymentMethod = document.getElementById('payment-method').value;
+    alert(`Pagamento realizado com ${paymentMethod}.`);
+}
+
+function confirmDeposit() {
+    const depositAmount = document.getElementById('deposit-amount').value;
+    
+    if (!depositAmount) {
+        alert('Por favor, selecione um valor válido para o depósito.');
+        return;
+    }
+
+    alert(`Depósito confirmado! Envie o valor de R$ ${depositAmount} para a chave Pix: betblazersuporte@gmail.com`);
+}
+
+function registerAccount() {
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Verificar se todos os campos estão preenchidos
+    if (!phone || !email || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Simular o salvamento dos dados
+    const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+    accounts.push({ phone, email, password });
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+
+    alert('Conta registrada com sucesso!');
+}</script></body></html>
